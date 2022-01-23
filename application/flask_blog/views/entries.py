@@ -57,7 +57,25 @@ def show_entry(id):
 @app.route("/entries/<int:id>/edit", methods=["GET"])
 def edit_entry(id):
     # TODO: 記事の編集フォームを表示
-    return f"記事{id}の編集フォームを表示"
+    entries = [
+        {
+            "id": 1,
+            "title": "初めての投稿",
+            "text": "testtesttest",
+            "create_at": datetime.now(),
+        },
+        {
+            "id": 2,
+            "title": "2つ目の投稿",
+            "text": "testtesttest for 2",
+            "create_at": datetime.now(),
+        }
+    ]
+    entry = None
+    for e in entries:
+        if e["id"] == id:
+            entry = e
+    return render_template("entries/edit.html", entry=entry)
 
 
 @app.route("/entries/<int:id>/update", methods=["POST"])
