@@ -31,7 +31,7 @@ def show_entries():
     return render_template("entries/index.html", entries=entries)
 
 
-@app.route("/entries", methods=["POSTS"])
+@app.route("/entries", methods=["POST"])
 def add_entry():
     # TODO: 記事の作成処理を実装
     return "新しく記事が作成されました"
@@ -39,8 +39,7 @@ def add_entry():
 
 @app.route("/entries/new", methods=["GET"])
 def new_entry():
-    # TODO: 記事の入力フォームを表示
-    return "記事の入力フォームを表示"
+    return render_template("entries/new.html")
 
 
 @app.route("/entries/<int:id>", methods=["GET"])
