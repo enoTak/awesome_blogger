@@ -1,4 +1,3 @@
-from errno import ENOTUNIQ
 from flask import (
     render_template,
     request,
