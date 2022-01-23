@@ -18,9 +18,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav navbar-right">
-                {% if not current_user.is_autheticated %}
+                {% if not current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-item" href="{{ url_for('login')}}">ログイン</a>
+                    <a class="nav-item" href="{{ url_for('login') }}">ログイン</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
@@ -33,6 +33,12 @@
             </ul>
         </div>
     </nav>
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
 
     <div class="blog-body">
         {% block body%}{% endblock %}

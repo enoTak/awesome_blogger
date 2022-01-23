@@ -36,6 +36,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route(404)
+@app.errorhandler(404)
 def non_existant_route(error):
     return redirect(url_for("login"))

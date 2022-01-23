@@ -1,4 +1,3 @@
-from cmath import log
 from flask import Flask
 from flask_login import LoginManager
 
