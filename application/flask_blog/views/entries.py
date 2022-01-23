@@ -1,4 +1,12 @@
-from flask import render_template, request
+from flask import (
+    render_template,
+    request,
+    redirect,
+    url_for,
+    render_template,
+    flash,
+    session
+)
 from flask_blog import app
 from datetime import datetime
 
@@ -6,7 +14,21 @@ from datetime import datetime
 @app.route("/")
 def show_entries():
     # TODO: show all entries
-    return "全ての記事を表示"
+    entries = [
+        {
+            "id": 1,
+            "title": "初めての投稿",
+            "text": "testtesttest",
+            "create_at": datetime.now(),
+        },
+        {
+            "id": 2,
+            "title": "2つ目の投稿",
+            "text": "testtesttest for 2",
+            "create_at": datetime.now(),
+        }
+    ]
+    return render_template("entries/index.html", entries=entries)
 
 
 @app.route("/entries", methods=["POSTS"])
