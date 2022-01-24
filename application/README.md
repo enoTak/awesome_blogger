@@ -3,7 +3,7 @@
 1. copy "dynamodb_local_latest" in "application" directory.
 1. execute launch_dynamodblocal.sh. For test execution, we need to keep launching DynamoDb in local env.
 
-# Setting for deployment to AWS to zappa
+# Setting for deployment to AWS by zappa
 1. create "application/zappa_setting.json" file.
 1. sample setting in this file is as follows:
 ```
