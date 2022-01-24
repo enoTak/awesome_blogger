@@ -3,7 +3,24 @@ import gspread
 import boto3
 import pytz
 from oauth2client.service_account import ServiceAccountCredentials
+from slack_sdk import WebClient
+import ssl
 import os
+
+
+def notify_to_slack(message, channel):
+    ssl_context = ssl.create_default_context()
+    ssl_context.check_hostname = False
+    ssl_context.verify_mode = ssl.CERT_NONE
+
+    slack_token = os.environ.get(
+        "SERVERLESS_SLACK_BOT_API_TOKEN")
+    client = WebClient(slack_token, ssl=ssl_context)
+    client.chat_postMessage(
+        channel=channel,
+        as_user=True,
+        text=message
+    )
 
 
 def get_kpi():
@@ -45,12 +62,15 @@ def update_gas(today, entry_num, doc_id):
 
 def run_bot():
     doc_id = os.environ.get("GSPREAD_DOC_ID")
-    # doc_id = "1Xj9HRr3J2UuQ6rOm9hxsRL8L5pcC-D19I2x5ABPQzb8"
     today = str(datetime.datetime.now(
         pytz.timezone("Asia/Tokyo")).date()
         )
     entry_num = get_kpi()
     update_gas(today, entry_num, doc_id)
+
+    channel_id = os.environ.get("SLACK_BOT_CHANNEL_ID")
+    message = f"{today}\n記事数: {entry_num}\nhttps://docs.google.com/spreadsheets/d/{doc_id}"
+    notify_to_slack(message, channel_id)
 
 
 if __name__=="__main__":

@@ -9,6 +9,7 @@ pytz = "*"
 oauth2client = "*"
 zappa = "*"
 gspread = "*"
+slack-sdk = "*"
 
 [dev-packages]
 
