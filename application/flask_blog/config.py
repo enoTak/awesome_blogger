@@ -28,7 +28,7 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     DEBUG = False
 
-    AWS_ACCESS_KEY_ID = os.environ.get("SERVERLESS_AWS_ACCESS_KEY")
+    AWS_ACCESS_KEY_ID = os.environ.get("SERVERLESS_AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("SERVERLESS_AWS_SECRET_KEY")
     DYNAMODB_ENDPOINT_URL = None
 

@@ -132,3 +132,5 @@ dmypy.json
 
 application/dynamodb_local_latest
 application/zappa_settings.json
+serverless_bot/zappa_settings.json
+serverless_bot/serverless-gas-client-secret.json
