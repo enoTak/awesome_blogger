@@ -16,7 +16,8 @@
         "environment_variables": {
             "SERVERLESS_AWS_ACCESS_KEY_ID": "xxxxxxxx",
             "SERVERLESS_AWS_SECRET_KEY": "xxxxxxxx",
-            "GSPREAD_DOC_ID": "xxxxxxxx"
+            "GSPREAD_DOC_ID": "xxxxxxxx",
+            "SLACK_BOT_CHANNEL_ID": "Cxxxxxxxx"
         },
         "events": [
             {
