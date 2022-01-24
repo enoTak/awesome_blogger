@@ -1,9 +1,20 @@
 from flask import Flask
+from flask_sessionstore import Session
 from flask_login import LoginManager
+import os
+
+
+config = {
+    "defalut": "flask_blog.config.DevelopmentConfig",
+    "development": "flask_blog.config.DevelopmentConfig",
+    "production": "flask_blog.config.ProductionConfig",
+}
 
 
 app = Flask(__name__)
-app.config.from_object("flask_blog.config")
+config_name = os.getenv("SERVERLESS_BLOG_CONFIG", "default")
+app.config.from_object(config[config_name])
+Session(app)
 
 
 login_manager = LoginManager()
